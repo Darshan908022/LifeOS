@@ -1,0 +1,109 @@
+
+/* =========================================
+   LIFEOS CURSOR GLOW EFFECT
+========================================= */
+
+.lifeos-cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  background-image: radial-gradient(
+    rgba(128, 98, 237, 0.13) 1px,
+    transparent 1px
+  );
+
+  background-size: 25px 25px;
+  background-position: center;
+}
+
+/* CURSOR SPOTLIGHT */
+
+.lifeos-cursor-spot {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 520px;
+  height: 520px;
+
+  margin-left: -260px;
+  margin-top: -260px;
+
+  border-radius: 50%;
+  pointer-events: none;
+
+  opacity: 0;
+
+  background: radial-gradient(
+    circle,
+    rgba(139, 108, 255, 0.15) 0%,
+    rgba(139, 108, 255, 0.08) 30%,
+    rgba(139, 108, 255, 0.025) 55%,
+    transparent 72%
+  );
+
+  filter: blur(12px);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.16s ease-out;
+
+  will-change: transform;
+}
+
+/* LIGHT THEME */
+
+[data-theme="light"] .lifeos-cursor-layer {
+  background-image: radial-gradient(
+    rgba(103, 80, 190, 0.12) 1px,
+    transparent 1px
+  );
+}
+
+[data-theme="light"] .lifeos-cursor-spot {
+  background: radial-gradient(
+    circle,
+    rgba(130, 100, 240, 0.13) 0%,
+    rgba(130, 100, 240, 0.07) 32%,
+    rgba(130, 100, 240, 0.025) 55%,
+    transparent 72%
+  );
+}
+
+/* DARK THEME */
+
+[data-theme="dark"] .lifeos-cursor-layer {
+  background-image: radial-gradient(
+    rgba(165, 143, 255, 0.14) 1px,
+    transparent 1px
+  );
+}
+
+[data-theme="dark"] .lifeos-cursor-spot {
+  background: radial-gradient(
+    circle,
+    rgba(139, 108, 255, 0.19) 0%,
+    rgba(139, 108, 255, 0.09) 32%,
+    rgba(139, 108, 255, 0.035) 55%,
+    transparent 72%
+  );
+}
+
+/* TOUCH DEVICES */
+
+@media (hover: none), (pointer: coarse) {
+  .lifeos-cursor-spot {
+    display: none;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .lifeos-cursor-spot {
+    transition: none;
+  }
+}

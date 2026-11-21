@@ -1,0 +1,58 @@
+
+# Frontend
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# Python backend
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python databases
+*.sqlite
+*.sqlite3
+
+# User uploads
+uploads/
+
+# Coverage
+.coverage
+htmlcov/
+# Python environments
+venv/
+.venv/
