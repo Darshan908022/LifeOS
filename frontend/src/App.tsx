@@ -61,7 +61,7 @@ interface UserProfile {
   name?: string;
   full_name?: string;
   email?: string;
-  profile_image?: string;
+  profile_image?: string | null;
   avatar_url?: string;
 }
 
@@ -341,8 +341,7 @@ function App() {
     setSearchOpen(false);
     setNotificationsOpen(false);
 
-    // When opening the dedicated AI page,
-    // show the shared AI component in full-page mode.
+    // Hide floating AI when opening its full page.
     if (page === "AI Assistant") {
       setAiWidgetOpen(false);
       setAiWidgetMinimized(false);
@@ -400,7 +399,9 @@ function App() {
   const isAIPage = activePage === "AI Assistant";
 
   const showFloatingAI =
-    aiWidgetOpen && !aiWidgetMinimized && !isAIPage;
+    aiWidgetOpen &&
+    !aiWidgetMinimized &&
+    !isAIPage;
 
   const showAIHost =
     isAIPage || showFloatingAI;
@@ -1303,9 +1304,9 @@ function App() {
         {/* =====================================
             SHARED AI ASSISTANT HOST
 
-            IMPORTANT:
-            This is the only AIChat instance.
-            It remains mounted while switching pages.
+            Only one AIChat instance is mounted.
+            This preserves its React state when
+            switching between page and widget mode.
         ====================================== */}
 
         <div
@@ -1316,6 +1317,7 @@ function App() {
               ? "ai-shared-host ai-floating-panel"
               : "ai-shared-host ai-shared-host-hidden"
           }
+          aria-hidden={!showAIHost}
         >
 
           <AIChat
